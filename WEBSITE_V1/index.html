@@ -1,0 +1,569 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>BONK Token</title>
+  <meta name="description" content="BONK Token">
+  <meta name="author" content="BONK Token">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="img/favicon.png" type="image">
+  <link rel="stylesheet" href="css/styles.css?v=1.0.4">
+  <link rel="stylesheet" href="css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+  
+</head>
+
+<body>
+<div id="site" class="site">
+  <canvas id="canvas" class="js-canvas" style="opacity: .08"></canvas>
+<section class="topnav" style="padding-bottom:0!important;">
+  <div style="background-color: #b23929; height: 500px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 p-4">
+        <nav class="navbar navbar-expand-lg navbar-light static-top">
+          <div class="container logo">
+            <h2 onclick="location.href = 'https://www.bonktoken.com';" style="font-weight:700!important;padding-top:.2em;cursor: pointer;"><img src="img/logo.png" height="50em" style="margin-top:-.18em">&nbsp;BONK</h2>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <div id="nav-icon4" style="zoom: 0.5;-moz-transform: scale(0.5);">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto text-center">
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://twitter.com/bonktoken" target="blank"><i class="fab fa-twitter" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://medium.com/@bonktoken" target="blank"><i class="fab fa-medium" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://t.me/bonktoken" target="blank"><i class="fab fa-telegram" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://discord.gg/bonkToken" target="blank"><i class="fab fa-discord" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://github.com/bonktoken" target="blank"><i class="fab fa-github" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://twitch.tv/amagicseal" target="blank"><i class="fab fa-twitch" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://www.youtube.com/channel/UCtIMpOV0w0kTWO5tJXh43PA" target="blank"><i class="fab fa-youtube" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+
+    <div class="row pb-5">
+      <div class="col-md-10 col-lg-8 col-xl-6  col-12 one yellow">
+        <img src="img/bonk.png">
+        <h2 class="text-left" style="margin-bottom: 0;">Time to get<br><b>BONK</b>ed!</h2>
+        <div class="black-line"></div>
+        <div class="row">
+          <a href="https://app.uniswap.org/#/swap?outputCurrency=0x6d6506e6f438ede269877a0a720026559110b7d5" class="btn trade" style="margin: auto;margin-top: 2em;display: inline;">Trade</a>
+          <a href="./stake/index.html" class="btn" style="margin: auto;margin-top: 2em;display: inline;">Stake</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="feature" style="margin-top: 200px; position: relative">
+  
+  <div class="container">
+
+    <!-- charting canvas here -->
+    <div class="row my-5 pt-5" style="display: block;">
+      <div class="row">
+        <div class="col-md-8 col-12 chart">
+            <canvas id="line-chart" width="100%">Price Chart Loading ...</canvas>
+        </div>
+        <div class="col-md-4 col-12 stats pl-5">
+          <p style="margin: auto; margin-bottom: 0;">Token Supply<br>
+             <span id="supply"><i class="fa fa-spinner fa-spin"></i></span></p>
+
+          <p style="margin: auto; margin-bottom: 0;">Price Change 24 Hrs<br>
+            <span id="trades"><i class="fa fa-spinner fa-spin"></i></span></p>
+
+          <p style="margin: auto; margin-bottom: 0;">Current Price<br>
+            <span id="USD"><i class="fa fa-spinner fa-spin"></i></span></p>
+
+          <p style="margin: auto; margin-bottom: 0;">Market Cap<br>
+            <span id="mcap"><i class="fa fa-spinner fa-spin"></i></span></p>
+        </div>
+      </div>
+    </div>
+    <!-- charting canvas ends here -->
+
+   
+
+    <div class="row my-5 pt-5">
+          <div class="row">
+            <div class="col-md-4 col-12 item">
+              <div class="item-body">
+                <img src="img/eth.png" height="90px" style="margin: 0 auto 20px auto;display: block">
+                <p class="text-center" style="margin-bottom: 0;"><b>BONK is a new ERC20 token</b> and 1% of every transfer is bonked into the staking pool.</p>
+              </div>
+            </div>
+            <div class="col-md-4 col-12 item">
+              <div class="item-body">
+                <img src="img/fee.png" height="90px" style="margin: 0 auto 20px auto;display: block">
+                <p class="text-center" style="margin-bottom: 0;"><b>Staking BONK is free</b> and when you unstake, 9% is bonked into the staking pool. </p>
+              </div>
+            </div>
+            <div class="col-md-4 col-12 item">
+              <div class="item-body">
+                <img src="img/pool.png" height="90px" style="margin: 0 auto 20px auto;display: block">
+                <p class="text-center" style="margin-bottom: 0;"><b>Staking BONK earns dividends</b> from the tokens that are bonked into the staking pool.</p>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="row mb-5 pt-5">
+      <div class="col-12 mb-5 mb-lg-0 ">
+            <h2 class="text-center my-5"><span style="color: #a98c6c">Liquidity Lock </span>Event</h2>
+            <p class="text-center px-4" style="margin-bottom: 0;">
+              
+              On July 19th, <b>BONK</b> officially became the first Uniswap token to livestream a liquidity lock. Locking the liquidity is extremely important for any investor because it ensures that they can relax, knowing that the pool creator cannot leave with all their funds anonymously. The idea was to set a new standard for the cryptocurrency space and to motivate other token creators to adopt a more communal approach.              <br><br> 
+              2,570,000 <b>BONK</b> & 10 Ethereum were initially added to the liquidity pool. When this was done, Uniswap sent tokens in return; BONK simply sent these tokens to the burn address to ensure that nobody can pull the rug, ever. </p>
+
+      </div>
+    </div>
+
+    <div class="row my-5 pt-5">
+      <div class="col-12 mb-5 mb-lg-0 founder">
+            <h2 class="text-center my-5">The <span style="color: #b23929">Founder</span></h2>
+            <p class="text-center px-4" style="margin-bottom: 0;">
+              <img class="mb-5" src="img/founder.png" height="270">
+              David Busch (Seal)<br>
+              <a href="mailto:bonktoken@gmail.com">bonktoken@gmail.com</a>
+              </p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  </div>
+
+  
+
+
+</div>
+</section>
+
+
+
+</div>
+    <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="./js/global.js"></script>
+    <!-- the token supply and metrics updating javascript goes here --->
+    <script type="text/javascript" src="./js/ticker.js"></script>
+    <!-- the token supply and metrics updating javascript ends here --->
+    <!-- charting code here -->
+    <script type="text/javascript" src="./js/chart-new.js?v=1.0.3"></script>
+
+    <script>
+    ;(function () {
+  
+  // Globals
+  var Animator, ani
+  var Shape
+  var Utils
+  
+  // Math aliases
+  var π = Math.PI
+  var random = Math.random
+  var round = Math.round
+  var floor = Math.floor
+  var abs = Math.abs
+  var sin = Math.sin
+  var cos = Math.cos
+  var tan = Math.tan
+  
+  // Animator
+  // --------
+  // Controller for canvas animation.
+
+  Animator = (function () {
+    function Animator (options) {
+      ani = this
+      ani.utils = new Utils()
+
+      // Overwrite defaults with any options passed
+      ani.utils.assign(ani.config, options || {})
+
+      // Basic setup on instantiation
+      ani.canvas = document.querySelector(ani.config.selector)
+      ani.canvas.style.position = 'absolute';
+      ani.canvas.width = window.innerWidth
+      ani.canvas.height = $(".site").height()
+      ani.ctx = ani.canvas.getContext('2d')
+      ani.shapes = [];
+      
+      // and lastly, update our canvas dimensions on window resize
+      window.addEventListener('resize', function () {
+        requestAnimFrame(function () {
+          ani.canvas.width = window.innerWidth
+          ani.canvas.height = $(".site").height()
+        })                          
+      })
+    }
+
+    Animator.prototype.config = {
+      density: 46,
+      minSize: 36,
+      maxSize: 164,
+      minSpeed: 0.05,
+      maxSpeed: .1,
+      selector: '.js-canvas',
+      colors: [
+        '#f8ef9d', // cyan
+        '#a98c6c', // mango
+        '#b23929', // magenta
+        '#303030', // noir
+        '#171717', // slate
+        '#000000'  // silver
+      ]
+    }
+
+    Animator.prototype.run = function (callback) {
+      for (var i = 0; i < ani.config.density; i++) {
+        ani.shapes.push(new Shape())
+      }
+      callback()
+    }
+
+    Animator.prototype.update = function () {
+      // clear the canvas before the next render
+      ani.ctx.clearRect(0,0, ani.canvas.width, ani.canvas.height)
+      
+      // for each shape, check for collisions and update position,
+      // velocity and rotation accordingly
+      for (var i = 0, numShapes = ani.shapes.length; i < numShapes; i++) {
+        var shape = ani.shapes[i]  
+        shape.checkLimits()
+        shape.update()
+      }
+    }
+
+    Animator.prototype.render = function () {
+      for (var i = 0, length = ani.shapes.length; i < length; i++) {
+        ani.shapes[i].render()
+      }
+    }
+
+    return Animator
+  })()
+
+  // Shape Factory
+  // -------------
+  // Base class for creating new shapes.
+
+  Shape = (function () {
+    var types = [
+      'square',
+      'triangle',
+      'circle'
+    ]
+    
+    function Shape () {
+      // generate a random size, within our min/max bounds
+      var maxSize = ani.config.maxSize
+      var minSize = ani.config.minSize
+      this.size = round(random() * (maxSize - minSize)) + minSize
+      
+      // generate a random position, with offsets based on size
+      // to prevent the element from spawning off the canvas
+      this.pos = {
+        x: round(random() * (ani.canvas.width - this.size * 2)) + this.size,
+        y: round(random() * (ani.canvas.height - this.size * 2)) + this.size
+      }
+      
+      // generate random boolean to determine
+      // if the shape will be stroked or filled
+      this.hollow = round(random())
+      
+      // generate random velocity using our maxSpeed, and then randomize the
+      // direction (positive/negative)
+      var minSpeed = ani.config.minSpeed
+      var maxSpeed = ani.config.maxSpeed
+      this.velocity = {
+        x: (random() * (maxSpeed - minSpeed) + minSpeed) * randomSign(),
+        y: (random() * (maxSpeed - minSpeed) + minSpeed) * randomSign()
+      }
+      
+      // shape rotation requires a few steps...
+      var rotationDirection = randomSign()
+      this.rotation = {
+        // randomly generated starting angle (in radians)
+        angle: round(random() * π * 2) * rotationDirection,
+        
+        // random direction, ie. clockwise (1) or counter-clockwise (-1)
+        direction: rotationDirection,
+        
+        // the amount of rotation per frame, created with a simple formula
+        // using the shape’s velocity and size
+        spin: (abs(this.velocity.x) + abs(this.velocity.y)) / this.size * rotationDirection
+      }
+
+      // select a random index from the Animator color array
+      this.color = ani.config.colors[floor(random() * ani.config.colors.length)]
+      
+      // select a random index from the types array
+      this.type = types[floor(random() * types.length)]
+    }
+    
+    Shape.prototype.update = function () {
+      this.pos.x += this.velocity.x
+      this.pos.y += this.velocity.y
+      
+      // we only need to update rotation for non-circle shapes
+      if (this.type !== 'circle') {
+        this.rotation.angle += this.rotation.spin
+      }
+    }
+    
+    Shape.prototype.checkLimits = function () {
+      var width = ani.canvas.width
+      var height = ani.canvas.height
+      
+      switch (this.type) {
+          
+        case 'square':
+        case 'triangle':
+          // pointed shapes must compare each limit to canvas bounds
+          if (this.limits) {
+            for (var i = 0, length = this.limits.length; i < length; i++) {
+              var limitX = this.pos.x + this.limits[i].x
+              var limitY = this.pos.y + this.limits[i].y
+              if (limitX < 0) this.velocity.x = abs(this.velocity.x)
+              if (limitX > width) this.velocity.x = abs(this.velocity.x) * -1
+              if (limitY < 0) this.velocity.y = abs(this.velocity.y)
+              if (limitY > height) this.velocity.y = abs(this.velocity.y) * -1
+            }
+          }
+          break
+              
+        // circles only need to compare their position + radius to canvas bounds
+        case 'circle':
+          var posX = this.pos.x
+          var posY = this.pos.y
+          var radius = this.size / 2
+          if (posX - radius < 0) this.velocity.x = abs(this.velocity.x)
+          if (posX + radius > width) this.velocity.x = abs(this.velocity.x) * -1
+          if (posY - radius < 0) this.velocity.y = abs(this.velocity.y)
+          if (posY + radius > height) this.velocity.y = abs(this.velocity.y) * -1
+          break
+      }
+    }
+
+    Shape.prototype.render = function () {
+      var ctx = ani.ctx
+      ctx.save()
+      ctx.translate(this.pos.x,this.pos.y)
+      ctx.rotate(this.rotation.angle)
+      ctx.fillStyle = this.color
+      
+      switch (this.type) {
+          
+        case 'square':
+          var half = this.size / 2
+          var third = this.size / 3
+          
+          // draw square (clockwise)
+          ctx.beginPath()
+          ctx.moveTo(-half, half)
+          ctx.lineTo(half, half)
+          ctx.lineTo(half, -half)
+          ctx.lineTo(-half, -half)
+          
+          // capture relative coordinates for each point,
+          // and then adjust for shape rotation
+          this.limits = [
+            { x: -half, y: half },
+            { x: half, y: half },
+            { x: half, y: -half },
+            { x: -half, y: -half }
+          ]
+          for (var i = 0, length = this.limits.length; i < length; i++) {
+            this.limits[i] = rotateCoord(this.limits[i], this.rotation.angle)
+          }
+          
+          // create a smaller square (counter-clockwise)
+          // to "cut" its shape from the larger one
+          if (this.hollow) {
+            ctx.moveTo(-third, third)
+            ctx.lineTo(-third, -third)
+            ctx.lineTo(third, -third)
+            ctx.lineTo(third, third)
+          }
+          
+          ctx.closePath()
+          ctx.fill()
+          break
+          
+        case 'triangle':
+          var half = this.size / 2
+          var quarter = half / 2
+          var apothem = this.size / (2 * tan( π / 3))
+          var height = round(Math.sqrt(3) * half)
+          
+          // draw triangle (clockwise)
+          ctx.beginPath()
+          ctx.moveTo(0, -height + apothem)
+          ctx.lineTo(half, apothem)
+          ctx.lineTo(-half, apothem)
+          
+          // capture relative coordinates for each point,
+          // and adjust for shape rotation
+          this.limits = [
+            { x: 0, y: -height + apothem },
+            { x: half, y: apothem },
+            { x: -half, y: apothem }
+          ]
+          for (var i = 0, length = this.limits.length; i < length; i++) {
+            this.limits[i] = rotateCoord(this.limits[i], this.rotation.angle)
+          }
+          
+          // create a smaller triangle (counter-clockwise)
+          // to "cut" its shape from the larger one
+          if (this.hollow) {
+            height /= 2
+            apothem /= 2
+            ctx.moveTo(0, -height + apothem)
+            ctx.lineTo(-quarter, apothem)
+            ctx.lineTo(quarter, apothem)
+          }
+          
+          ctx.closePath()
+          ctx.fill()
+          break
+          
+        case 'circle':
+          var radius = this.size / 2
+          ctx.beginPath()
+          
+          // draw circle (clockwise)
+          ctx.arc(0, 0, radius, 0, π * 2)
+          
+          // create a smaller circle (counter-clockwise)
+          // to "cut" its shape from the larger one
+          if (this.hollow) {
+            ctx.arc(0, 0, radius * 2 / 3, 0, π * 2, true)
+          }
+          
+          ctx.closePath()
+          ctx.fill()
+          break
+      }
+      
+      ctx.restore()
+    }
+
+    function randomSign () {
+      return round(random()) == 1 ? 1 : -1
+    }
+    
+    // rotates a point, maintaining distance from the center point
+    // more info: https://goo.gl/Ht2S0g
+    function rotateCoord (original, angle) {
+      return {
+        x: original.x * cos(angle) - original.y * sin(angle),
+        y: original.y * cos(angle) + original.x * sin(angle)
+      }
+    }
+
+    return Shape
+  })()
+
+  // Utilities
+  // ---------
+  // Helper methods when working with objects.
+
+  Utils = (function () {
+    function Utils () {}
+
+    Utils.prototype.isObject = function (object) {
+      return object !== null 
+        && typeof object === 'object'
+        && object.constructor == Object
+    }
+
+    Utils.prototype.forOwn = function (object, callback) {
+      if (!this.isObject(object)) {
+        throw new TypeError('Expected "object", but received "' + typeof object + '".')
+      } else {
+        for (var property in object) {
+          if (object.hasOwnProperty(property)) {
+            callback(property)
+          }
+        }
+      }
+    }
+
+    Utils.prototype.assign = function (target, source) {
+      this.forOwn(source, function (property) {
+        if (this.isObject(source[property])) {
+          if (!target[property] || !this.isObject(target[property])) {
+            target[property] = {}
+          }
+          this.assign(target[property], source[property])
+        } else {
+          target[property] = source[property]
+        }
+      }.bind(this))
+      return target
+    }
+
+    return Utils
+  })()
+
+  // Polyfill ////////////////////////////////////////////////////////////////////////
+
+  window.requestAnimFrame = (function () {
+    return window.requestAnimationFrame       ||
+           window.webkitRequestAnimationFrame ||
+           window.mozRequestAnimationFrame    ||
+
+      // Fallback for IE9
+      function (callback) {
+        window.setTimeout(callback, 1000 / 60)
+      }
+  })()
+
+  // Showtime! ///////////////////////////////////////////////////////////////////////
+
+  var animator = new Animator()
+
+  animator.run(function animate() {
+    animator.update()
+    animator.render()
+    requestAnimFrame(animate)
+  })
+  
+})()</script>
+
+
+</body>
+</html>

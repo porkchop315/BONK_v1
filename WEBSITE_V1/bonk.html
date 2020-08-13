@@ -1,0 +1,251 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>BONK Token</title>
+  <meta name="description" content="BONK Token">
+  <meta name="author" content="BONK Token">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="img/favicon.png" type="image">
+  <link rel="stylesheet" href="css/styles.css?v=1.0.4">
+  <link rel="stylesheet" href="css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+  
+</head>
+
+<body>
+<div id="site" class="site">
+
+<section class="topnav" style="padding-bottom:0!important;">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 p-4">
+        <nav class="navbar navbar-expand-lg navbar-light static-top">
+          <div class="container logo">
+            <h2 onclick="location.href = 'https://www.bonktoken.com';" style="font-weight:700!important;padding-top:.2em;cursor: pointer;"><img src="img/logo.png" height="50em" style="margin-top:-.18em">&nbsp;BONK</h2>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <div id="nav-icon4" style="zoom: 0.5;-moz-transform: scale(0.5);">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto text-center">
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://twitter.com/bonktoken" target="blank"><i class="fab fa-twitter" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://medium.com/@bonktoken" target="blank"><i class="fab fa-medium" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://t.me/bonktoken" target="blank"><i class="fab fa-telegram" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://discord.gg/bonkToken" target="blank"><i class="fab fa-discord" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://github.com/bonktoken" target="blank"><i class="fab fa-github" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://twitch.tv/amagicseal" target="blank"><i class="fab fa-twitch" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-3" href="https://www.youtube.com/channel/UCtIMpOV0w0kTWO5tJXh43PA" target="blank"><i class="fab fa-youtube" style="color: #fff!important;font-size: 30px;"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="feature">
+  <div class="text-center m-auto w-50">
+  <h1>Bonk-a-Doge!</h1>
+<h2>Score: <span class="score">0</span></h2>
+<button id="start" onClick="startGame()">Start</button>
+</div>
+<div class="game">
+  <div class="hole hole1">
+    <div class="mole"></div>
+  </div>
+  <div class="hole hole2">
+    <div class="mole"></div>
+  </div>
+  <div class="hole hole3">
+    <div class="mole"></div>
+  </div>
+  <div class="hole hole4">
+    <div class="mole"></div>
+  </div>
+  <div class="hole hole5">
+    <div class="mole"></div>
+  </div>
+  <div class="hole hole6">
+    <div class="mole"></div>
+  </div>
+</div>
+</section>
+
+
+
+</div>
+
+<style>
+  *, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.score {
+  background: #ffe5cf;
+  padding: 0 3rem;
+  line-height: 1;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  border-radius: 1rem;
+  color: #3b1010;
+}
+
+.game {
+  width: 600px;
+  height: 400px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.hole {
+  flex: 1 0 33.33%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hole:after {
+  display: block;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/dirt.svg') bottom center no-repeat;
+  background-size: contain;
+  content: '';
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  z-index: 2;
+  bottom: -30px;
+}
+
+.mole {
+  background: url('https://bonktoken.surge.sh/img/doge.png') bottom center no-repeat;
+  background-size: 60%;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s;
+}
+
+.hole.up .mole {
+  top: 0;
+}
+
+#start {
+  font-family: 'Nunito', sans-serif;
+  display: inline-block;
+  text-decoration: none;
+  border: 0;
+  background: #3b1010;
+  color: #fff;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  margin: 1rem;
+}
+
+#start:hover {
+  opacity: 0.8;
+}
+</style>
+
+<script>
+  const holes = document.querySelectorAll('.hole');
+const scoreBoard = document.querySelector('.score');
+const moles = document.querySelectorAll('.mole');
+const button = document.querySelector('#start');
+let lastHole;
+let timeUp = false;
+let score = 0;
+
+function randomTime(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
+function randomHole(holes) {
+  const idx = Math.floor(Math.random() * holes.length);
+  const hole = holes[idx];
+
+  if(hole === lastHole) {
+    console.log('Same one');
+    return randomHole(holes);
+  }
+
+  lastHole = hole;
+  return hole;
+}
+
+function peep() {
+  const time = randomTime(200, 1000);
+  const hole = randomHole(holes);
+  hole.classList.add('up');
+  setTimeout(() => {
+    hole.classList.remove('up');
+    if(!timeUp) peep();
+  }, time);
+}
+
+function startGame() {
+  scoreBoard.textContent = 0;
+  timeUp = false;
+  score = 0;
+  button.style.visibility = 'hidden';
+  peep();
+  setTimeout(() => {
+    timeUp = true;
+    button.innerHTML = 'Try again?'
+    button.style.visibility = 'visible';
+  }, 10000);
+}
+
+function bonk(e) {
+  if(!e.isTrusted) return;
+  score++;
+  this.classList.remove('up');
+  scoreBoard.textContent = score;
+}
+
+moles.forEach(mole => mole.addEventListener('click', bonk));
+</script>
+
+
+    <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="./js/global.js"></script>
+    <!-- the token supply and metrics updating javascript goes here --->
+    <script type="text/javascript" src="./js/ticker.js"></script>
+    <!-- the token supply and metrics updating javascript ends here --->
+    <!-- charting code here -->
+    <script type="text/javascript" src="./js/chart-new.js?v=1.0.3"></script>
+
+
+</body>
+</html>
